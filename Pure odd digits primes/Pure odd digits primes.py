@@ -5,37 +5,25 @@ def is_prime(i):
         if i % d == 0:
             return False
     return True
-    
-    
-def all_digits_odd(i):
-    return all(int(digit) % 2 != 0 for digit in str(i))
-    
 
-def odd_dig_primes(n): # P.O.D.P (pure ood digit prime)
-    
+def all_digits_odd(i):
+    return all(int(d) % 2 != 0 for d in str(i))
+
+def odd_dig_primes(n):
     liste = []
-    
-    
-    for i in range (2, n):
+
+    for i in range(2, n + 1):
         if is_prime(i) and all_digits_odd(i):
             liste.append(i)
-            
-    nombre_de_podp_en_dessous_de_n = len(liste) 
-    
-    if liste and liste[-1] < n:
-        plus_grand_podp_inferieur = liste[-1]
-    else:
-        plus_grand_podp_inferieur = list[-1] if liste[-1] >= n else liste[-2]
-        
+
+    count = len(liste)
+    largest = liste[-1]
+
     i = n + 1
     while True:
         if is_prime(i) and all_digits_odd(i):
-            plus_petit_podp_superieur = i
+            smallest_above = i
             break
         i += 1
-        
-    
-    return [nombre_de_podp_en_dessous_de_n, plus_grand_podp_inferieur, plus_petit_podp_superieur]
-    
-             
-    pass 
+
+    return [count, largest, smallest_above]
